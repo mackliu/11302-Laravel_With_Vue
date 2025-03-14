@@ -1,11 +1,12 @@
 <script setup>
 import {ref} from 'vue';
 import { useForm,router} from '@inertiajs/vue3';
+import axios from 'axios';
 const props=defineProps({
     event:Object,
     idx:Number,
 });
-const emit=defineEmits(['del','edit']);
+
 
 const editEvent=useForm({
     event:props.event.event,
@@ -23,7 +24,11 @@ const save=()=>{
     });
 }
 const del=(id)=>{
-    emit('del',id);
+    axios.delete(`/event/${id}`)
+    .then((res)=>{
+        //console.log(res.data);
+        router.reload();
+    }).catch(err=>console.log(err));
 }
 
 </script>

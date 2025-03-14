@@ -1,7 +1,6 @@
 <script setup>
 import { Head, Link ,useForm,router} from '@inertiajs/vue3';
 import { ref,reactive ,onBeforeMount} from 'vue';
-import axios from 'axios';
 import Event from '@/pages/Event.vue';
 
 const props=defineProps({
@@ -23,13 +22,13 @@ const addEvent=()=>{
      });
 }
 
-const del=(id)=>{
+/* const del=(id)=>{
     axios.delete(`/event/${id}`)
     .then((res)=>{
         //console.log(res.data);
         router.reload();
     }).catch(err=>console.log(err));
-}
+} */
 
 </script>
 
